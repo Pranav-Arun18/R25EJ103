@@ -5,6 +5,29 @@
 #define COLS 50
 
 char canvas[ROWS][COLS];
+#define MAX_OBJECTS 100
+
+typedef struct
+{
+    int id;
+    int type;      //1 Rectangle
+                   //2 Line
+                   //3 Circle
+                   //4 Triangle
+
+    int x1,y1;
+    int x2,y2;
+    int x3,y3;
+
+    int width,height;
+
+    int radius;
+
+} Shape;
+
+Shape shapes[MAX_OBJECTS];
+
+int count=0;
 
 void clearCanvas()
 {
@@ -104,6 +127,52 @@ void drawCircle(int xc,int yc,int r)
     }
 }
 
+void redrawCanvas()
+{
+    int i;
+
+    clearCanvas();
+
+    for(i=0;i<count;i++)
+    {
+        switch(shapes[i].type)
+        {
+            case 1:
+                drawRectangle(
+                    shapes[i].x1,
+                    shapes[i].y1,
+                    shapes[i].width,
+                    shapes[i].height);
+                break;
+
+            case 2:
+                drawLine(
+                    shapes[i].x1,
+                    shapes[i].y1,
+                    shapes[i].x2,
+                    shapes[i].y2);
+                break;
+
+            case 3:
+                drawCircle(
+                    shapes[i].x1,
+                    shapes[i].y1,
+                    shapes[i].radius);
+                break;
+
+            case 4:
+                drawTriangle(
+                    shapes[i].x1,
+                    shapes[i].y1,
+                    shapes[i].x2,
+                    shapes[i].y2,
+                    shapes[i].x3,
+                    shapes[i].y3);
+                break;
+        }
+    }
+}
+
 int main()
 {
     int choice;
@@ -112,13 +181,14 @@ int main()
 
     do
     {
-        printf("\n1.Rectangle");
-        printf("\n2.Line");
-        printf("\n3.Circle");
-        printf("\n4.Triangle");
-        printf("\n5.Display");
-        printf("\n6.Clear");
-        printf("\n7.Exit");
+        printf("\n1.Add Rectangle");
+        printf("\n2.Add Line");
+        printf("\n3.Add Circle");
+        printf("\n4.Add Triangle");
+        printf("\n5.Delete Object");
+        printf("\n6.Modify Object");
+        printf("\n7.Display");
+        printf("\n8.Exit");
 
         printf("\nChoice: ");
         scanf("%d",&choice);
