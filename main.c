@@ -20,19 +20,15 @@ typedef struct
     int x3,y3;
 
     int width,height;
-
     int radius;
-
 } Shape;
 
 Shape shapes[MAX_OBJECTS];
-
 int count=0;
 
 void clearCanvas()
 {
     int i,j;
-
     for(i=0;i<ROWS;i++)
     {
         for(j=0;j<COLS;j++)
@@ -59,7 +55,6 @@ void displayCanvas()
 void drawRectangle(int x,int y,int width,int height)
 {
     int i,j;
-
     for(i=x;i<x+height && i<ROWS;i++)
     {
         for(j=y;j<y+width && j<COLS;j++)
@@ -87,7 +82,6 @@ void drawLine(int x1,int y1,int x2,int y2)
     float y=y1;
 
     int i;
-
     for(i=0;i<=steps;i++)
     {
         if((int)x>=0 && (int)x<ROWS &&
@@ -95,7 +89,6 @@ void drawLine(int x1,int y1,int x2,int y2)
         {
             canvas[(int)x][(int)y]='*';
         }
-
         x+=xInc;
         y+=yInc;
     }
@@ -113,7 +106,6 @@ void drawTriangle(int x1,int y1,
 void drawCircle(int xc,int yc,int r)
 {
     int x,y;
-
     for(x=0;x<ROWS;x++)
     {
         for(y=0;y<COLS;y++)
@@ -130,9 +122,7 @@ void drawCircle(int xc,int yc,int r)
 void redrawCanvas()
 {
     int i;
-
     clearCanvas();
-
     for(i=0;i<count;i++)
     {
         switch(shapes[i].type)
@@ -176,7 +166,6 @@ void redrawCanvas()
 int main()
 {
     int choice;
-
     clearCanvas();
 
     do
@@ -221,7 +210,6 @@ int main()
 
                 printf("Enter x1 y1 x2 y2: ");
                 scanf("%d%d%d%d",&x1,&y1,&x2,&y2);
-
                 Shape s;
                 s.id = count + 1;
                 s.type = 2;
@@ -238,7 +226,6 @@ int main()
             case 3:
             {
                 int xc,yc,r;
-
                 printf("Enter center_x center_y radius: ");
                 scanf("%d%d%d",&xc,&yc,&r);
 
@@ -257,9 +244,7 @@ int main()
             case 4:
             {
                 int x1,y1,x2,y2,x3,y3;
-
                 printf("Enter x1 y1 x2 y2 x3 y3: ");
-
                 scanf("%d%d%d%d%d%d",
                       &x1,&y1,
                       &x2,&y2,
@@ -282,14 +267,81 @@ int main()
 
             case 5:
             {
-                displayCanvas();
+                int id,i,j;
+                printf("Enter object ID to delete: ");
+                scanf("%d",&id);
+
+                for(i=0;i<count;i++)
+                {
+                    if(shapes[i].id==id)
+                    {
+                        for(j=i;j<count-1;j++)
+                        {
+                            shapes[j]=shapes[j+1];
+                        }
+                        count--;
+                        redrawCanvas();
+                        printf("Object deleted.\n");
+                        break;
+                    }
+                }
                 break;
             }
 
             case 6:
             {
-                clearCanvas();
-                printf("Canvas Cleared\n");
+                int id,i;
+                printf("Enter object ID to modify: ");
+                scanf("%d",&id);
+                for(i=0;i<count;i++)
+                {
+                    if(shapes[i].id==id)
+                    {
+                        switch(shapes[i].type)
+                        {
+                            case 1:
+                                printf("Enter new x y width height: ");
+                                scanf("%d%d%d%d",
+                                    &shapes[i].x1,
+                                    &shapes[i].y1,
+                                    &shapes[i].width,
+                                    &shapes[i].height);
+                                break;
+
+                            case 2:
+                                printf("Enter new x1 y1 x2 y2: ");
+                                scanf("%d%d%d%d",
+                                    &shapes[i].x1,
+                                    &shapes[i].y1,
+                                    &shapes[i].x2,
+                                    &shapes[i].y2);
+                                break;
+
+                            case 3:
+                                printf("Enter new center_x center_y radius: ");
+                                scanf("%d%d%d",
+                                    &shapes[i].x1,
+                                    &shapes[i].y1,
+                                    &shapes[i].radius);
+                                break;
+
+                            case 4:
+                                printf("Enter new x1 y1 x2 y2 x3 y3: ");
+                                scanf("%d%d%d%d%d%d",
+                                    &shapes[i].x1,
+                                    &shapes[i].y1,
+                                    &shapes[i].x2,
+                                    &shapes[i].y2,
+                                    &shapes[i].x3,
+                                    &shapes[i].y3);
+                                break;
+                        }
+
+                        redrawCanvas();
+                        printf("Object modified.\n");
+                        break;
+                    }
+                }
                 break;
             }
 
@@ -311,7 +363,7 @@ int main()
                 break;
             }
         }
-
-    }while(choice != 8);
+    }
+    while(choice != 8);
     return 0;
 }
