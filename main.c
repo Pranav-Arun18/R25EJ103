@@ -25,6 +25,7 @@ typedef struct
 
 Shape shapes[MAX_OBJECTS];
 int count=0;
+int activeMode = 0; 
 
 void clearCanvas()
 {
@@ -125,6 +126,8 @@ void redrawCanvas()
     clearCanvas();
     for(i=0;i<count;i++)
     {
+        if(activeMode != 0 && shapes[i].id != activeMode)
+            continue;
         switch(shapes[i].type)
         {
             case 1:
@@ -178,6 +181,8 @@ int main()
         printf("\n6.Modify Object");
         printf("\n7.Display");
         printf("\n8.Exit");
+        printf("\n9.View Single Object");
+        printf("\n10.View All Objects");
 
         printf("\nChoice: ");
         scanf("%d",&choice);
@@ -200,7 +205,9 @@ int main()
                 s.height = height;
                 shapes[count] = s;
                 count++;
-                redrawCanvas();
+                clearCanvas();
+                drawRectangle(x,y,width,height);
+                displayCanvas();
                 break;
             }
 
@@ -219,7 +226,9 @@ int main()
                 s.y2 = y2;
                 shapes[count] = s;
                 count++;
-                redrawCanvas();
+                clearCanvas();
+                drawLine(x1,y1,x2,y2);
+                displayCanvas();
                 break;
             }
 
@@ -237,7 +246,9 @@ int main()
                 s.radius = r;
                 shapes[count] = s;
                 count++;
-                redrawCanvas();
+                clearCanvas();
+                drawCircle(xc,yc,r);
+                displayCanvas();
                 break;
             }
 
@@ -261,7 +272,9 @@ int main()
                 s.y3 = y3;
                 shapes[count] = s;
                 count++;
-                redrawCanvas();
+                clearCanvas();
+                drawTriangle(x1,y1,x2,y2,x3,y3);
+                displayCanvas();
                 break;
             }
 
@@ -347,6 +360,7 @@ int main()
 
             case 7:
             {
+                redrawCanvas();
                 displayCanvas();
                 break;
             }
@@ -354,6 +368,26 @@ int main()
             case 8:
             {
                 printf("Exiting...\n");
+                break;
+            }
+
+            case 9:
+            {
+                int id;
+                printf("Enter object ID to view: ");
+                scanf("%d", &id);
+
+                activeMode = id;   
+                redrawCanvas();
+                displayCanvas();
+                break;
+            }
+
+            case 10:
+            {
+                activeMode = 0;    
+                redrawCanvas();
+                displayCanvas();
                 break;
             }
 
