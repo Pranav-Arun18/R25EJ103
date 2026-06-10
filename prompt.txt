@@ -1,0 +1,452 @@
+# 📘 2D Graphics Editor - Project Development Log
+
+## 1. Initial Problem Statement
+
+### Prompt
+
+Write a 2D graphics editor using `*` and `_`.
+
+Requirements:
+
+* Draw Rectangle
+* Draw Line
+* Draw Circle
+* Draw Triangle
+* Add Objects
+* Delete Objects
+* Modify Objects
+* Use a 2D Character Array
+* Display the Picture
+
+### Output
+
+Designed a menu-driven graphics editor using:
+
+* 2D Character Canvas
+* Shape Drawing Functions
+* Display Function
+* Object Management
+
+---
+
+## 2. Project Planning
+
+### Prompt
+
+I have only a few days left. Give proper Day 1, Day 2, Day 3 plan.
+
+### Output
+
+Planned development schedule.
+
+### Day 1
+
+* Create Canvas
+* Implement Rectangle
+* Implement Line
+* Display Function
+* Menu System
+
+### Day 2
+
+* Implement Circle
+* Implement Triangle
+* Improve Menu
+* Add Clear Canvas
+
+### Day 3
+
+* Store Shapes
+* Use Structures
+* Add Object Functionality
+
+### Day 4
+
+* Delete Objects
+* Modify Objects
+* Redraw Canvas
+
+### Day 5
+
+* Testing
+* README
+* GitHub Submission
+
+---
+
+## 3. Basic Graphics Editor
+
+### Prompt
+
+Give complete code for Day 1.
+
+### Output
+
+Implemented:
+
+* clearCanvas()
+* displayCanvas()
+* drawRectangle()
+* drawLine()
+
+---
+
+## 4. Additional Shapes
+
+### Prompt
+
+Give Day 2 code.
+
+### Output
+
+Implemented:
+
+* drawCircle()
+* drawTriangle()
+
+Menu became:
+
+```text
+1.Rectangle
+2.Line
+3.Circle
+4.Triangle
+5.Display
+6.Clear
+7.Exit
+```
+
+---
+
+## 5. Shape Storage
+
+### Prompt
+
+Next what to do?
+
+### Output
+
+Created Shape Structure:
+
+```c
+typedef struct
+{
+    int id;
+    int type;
+
+    int x1,y1;
+    int x2,y2;
+    int x3,y3;
+
+    int width,height;
+    int radius;
+
+} Shape;
+```
+
+Created:
+
+```c
+Shape shapes[MAX_OBJECTS];
+int count = 0;
+```
+
+---
+
+## 6. Redraw Mechanism
+
+### Prompt
+
+How to display remaining objects after deletion?
+
+### Output
+
+Implemented:
+
+```c
+void redrawCanvas()
+```
+
+which:
+
+* Clears the canvas
+* Loops through all objects
+* Draws them again
+
+using:
+
+```c
+switch(shapes[i].type)
+```
+
+---
+
+## 7. Add Object Functionality
+
+### Prompt
+
+Where to replace in case 1?
+
+### Output
+
+Implemented storage for:
+
+### Rectangle
+
+```c
+s.type = 1;
+```
+
+### Line
+
+```c
+s.type = 2;
+```
+
+### Circle
+
+```c
+s.type = 3;
+```
+
+### Triangle
+
+```c
+s.type = 4;
+```
+
+Objects are stored inside:
+
+```c
+shapes[count]
+```
+
+and
+
+```c
+count++
+```
+
+---
+
+## 8. Delete Object
+
+### Prompt
+
+For case 5 delete object.
+
+### Output
+
+Implemented:
+
+* Object ID input
+* Search using loop
+* Shift array elements
+* Decrement count
+* Redraw Canvas
+
+Result:
+
+```text
+Object deleted.
+```
+
+---
+
+## 9. Modify Object
+
+### Prompt
+
+For modify case.
+
+### Output
+
+Implemented:
+
+* Object ID input
+* Search object
+* Identify type
+* Accept new coordinates
+* Update structure values
+* Redraw Canvas
+
+Result:
+
+```text
+Object modified.
+```
+
+---
+
+## 10. Individual Shape Display
+
+### Prompt
+
+I want separate output for every shape while adding.
+
+### Output
+
+Implemented:
+
+```c
+clearCanvas();
+drawShape();
+displayCanvas();
+```
+
+Result:
+
+* Rectangle shown separately
+* Circle shown separately
+* Line shown separately
+* Triangle shown separately
+
+while objects remain stored in memory.
+
+---
+
+## 11. Display All Objects
+
+### Prompt
+
+Display all stored shapes together.
+
+### Output
+
+Implemented:
+
+```c
+case 7:
+{
+    redrawCanvas();
+    displayCanvas();
+}
+```
+
+Result:
+
+All stored shapes appear together.
+
+---
+
+## 12. Testing Inputs
+
+### Rectangle
+
+Input:
+
+```text
+2 5 10 4
+```
+
+### Line
+
+Input:
+
+```text
+0 0 15 25
+```
+
+### Circle
+
+Input:
+
+```text
+10 20 5
+```
+
+### Triangle
+
+Input:
+
+```text
+2 5
+10 15
+15 5
+```
+
+---
+
+## 13. GitHub Workflow
+
+### Prompt
+
+Commit statement for Day 3?
+
+### Output
+
+Used commits such as:
+
+```text
+Implemented basic shape storage using structures
+
+Added object management and redraw functionality
+
+Implemented delete and modify operations
+
+Completed menu driven 2D graphics editor
+```
+
+---
+
+## 14. Documentation
+
+### Prompt
+
+Create attractive README.
+
+### Output
+
+Created:
+
+```text
+README.md
+```
+
+containing:
+
+* Features
+* Menu Options
+* Technologies Used
+* Screenshots
+* Learning Outcomes
+* Future Enhancements
+
+---
+
+# ✅ Final Features
+
+* Draw Rectangle
+* Draw Line
+* Draw Circle
+* Draw Triangle
+* Menu Driven Program
+* 2D Character Canvas
+* Shape Storage using Structures
+* Add Objects
+* Delete Objects
+* Modify Objects
+* Display Canvas
+* Redraw Canvas
+* Individual Shape Display
+* Display All Stored Objects
+* Clear Canvas
+* GitHub Version Control
+* README Documentation
+
+---
+
+# 📁 Repository Contents
+
+```text
+main.c
+README.md
+PROJECT_DEVELOPMENT_LOG.md
+screenshots/
+```
+
+---
+
+# 🎯 Final Status
+
+2D Graphics Editor Successfully Implemented and Ready for GitHub Submission.
