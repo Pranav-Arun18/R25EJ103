@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
 <title>Pranav Arun | Portfolio</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -14,8 +16,9 @@
 
 body{
     font-family: Arial, sans-serif;
-    background:#f4f4f4;
+    background:#f4f6f8;
     color:#333;
+    line-height:1.6;
 }
 
 header{
@@ -23,6 +26,7 @@ header{
     color:white;
     text-align:center;
     padding:40px;
+    border-bottom:8px solid #e5c5b5;
 }
 
 header img{
@@ -31,20 +35,37 @@ header img{
     border-radius:50%;
     border:5px solid white;
     object-fit:cover;
+    margin-bottom:20px;
+}
+
+.container{
+    width:80%;
+    max-width:950px;
+    margin:auto;
+    padding:20px;
 }
 
 section{
     background:white;
-    width:80%;
-    margin:20px auto;
     padding:25px;
+    margin-bottom:20px;
     border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
 h2{
     color:#4f8a8b;
     margin-bottom:15px;
+    border-bottom:2px solid #f0f2f5;
+    padding-bottom:8px;
+}
+
+.project-card{
+    background:#fafbfc;
+    border-left:5px solid #4f8a8b;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:5px;
 }
 
 ul{
@@ -56,12 +77,19 @@ li{
 }
 
 footer{
-    background:#4f8a8b;
+    background:#333;
     color:white;
     text-align:center;
     padding:20px;
-    margin-top:20px;
+    margin-top:30px;
 }
+
+@media(max-width:768px){
+    .container{
+        width:95%;
+    }
+}
+
 </style>
 </head>
 
@@ -72,11 +100,15 @@ footer{
 <img src="photo.jpg" alt="Pranav Arun">
 
 <h1>PRANAV ARUN</h1>
+
 <h3>Computer Science and Information Technology Student</h3>
 
 </header>
 
+<div class="container">
+
 <section>
+
 <h2>About Me</h2>
 
 <p>
@@ -90,11 +122,10 @@ Enthusiastic about learning new technologies and applying knowledge through prac
 
 <h2>Education</h2>
 
-<h3>REVA University</h3>
-
 <p>
+<strong>REVA University</strong><br>
 B.Tech in Computer Science and Information Technology<br>
-2025 - Present
+<em>2025 - Present</em>
 </p>
 
 </section>
@@ -103,17 +134,48 @@ B.Tech in Computer Science and Information Technology<br>
 
 <h2>Technical Projects</h2>
 
-<ul>
+<div class="project-card">
 
-<li>2D Graphics Editor in C</li>
+<h3>1. Multi-Canvas 2D Graphics Editor (C Programming)</h3>
 
-<li>Python Mini Project</li>
+<p>
+Developed a console-based 2D graphics framework in C implementing Rectangle,
+Line, Circle and Triangle objects using independent layered canvases.
+</p>
 
-<li>EDL Project</li>
+</div>
 
-<li>Completed Wadhwani Foundation Course</li>
+<div class="project-card">
 
-</ul>
+<h3>2. Python Mini Project</h3>
+
+<p>
+Developed mini applications using Python and applied problem-solving concepts.
+</p>
+
+</div>
+
+<div class="project-card">
+
+<h3>3. EDL Project</h3>
+
+<p>
+Designed and implemented Electronics Design Laboratory projects involving
+automation and embedded systems concepts.
+</p>
+
+</div>
+
+<div class="project-card">
+
+<h3>4. Wadhwani Foundation Course</h3>
+
+<p>
+Completed the professional development course offered by the
+<strong>Wadhwani Foundation.</strong>
+</p>
+
+</div>
 
 </section>
 
@@ -140,7 +202,9 @@ B.Tech in Computer Science and Information Technology<br>
 <h2>Languages</h2>
 
 <ul>
+
 <li>English (Fluent)</li>
+
 </ul>
 
 </section>
@@ -149,13 +213,15 @@ B.Tech in Computer Science and Information Technology<br>
 
 <h2>Contact</h2>
 
-<p><b>Phone:</b> 9535558362</p>
+<p>📞 +91 9535558362</p>
 
-<p><b>Email:</b> pranavarun2007@gmail.com</p>
+<p>✉️ pranavarun2007@gmail.com</p>
 
-<p><b>Location:</b> Bangalore, Karnataka, India</p>
+<p>📍 Bangalore, Karnataka, India</p>
 
 </section>
+
+</div>
 
 <footer>
 
@@ -165,3 +231,4 @@ B.Tech in Computer Science and Information Technology<br>
 
 </body>
 </html>
+```
